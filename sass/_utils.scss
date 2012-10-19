@@ -1,0 +1,99 @@
+/* --| IE Friendly Media Queries (http://jakearchibald.github.com/sass-ie/) |----------------- */
+
+$fix-mqs: false !default;
+$old-ie: false !default;
+
+@mixin respond-min($width) {
+    @if $fix-mqs {
+        @if $fix-mqs >= $width {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (min-width: $width) {
+            @content;
+        }
+    }
+}
+
+@mixin respond-max($width) {
+    @if $fix-mqs {
+        @if $fix-mqs <= $width {
+            @content;
+        }
+    }
+    @else {
+        @media screen and (max-width: $width) {
+            @content;
+        }
+    }
+}
+
+@mixin old-ie {
+    @if $old-ie {
+        @content;
+    }
+}
+
+
+/* --| Extendable Classes |----------------- */
+
+.clearfix {
+	zoom: 1;
+	&:after { 
+		content: " ";
+		display: table;
+	}
+}
+
+.hideText {
+	text-indent: -9999px;
+	display: block;
+	font-size: 0;
+	line-height: 0;
+}
+
+.cleanList {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.boxSized {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+
+
+/* --| Vendor Prefixed CSS3 |----------------- */
+
+@mixin borderRadius ( $rad ) {
+	border-radius: $rad;
+	-webkit-border-radius: $rad;
+	-moz-border-radius: $rad;
+	-o-border-radius: $rad;
+}
+
+@mixin boxShadow( $x, $y, $spread, $blur, $col) {
+	box-shadow: $x $y $spread $blur $col;
+	-webkit-box-shadow: $x $y $spread $blur $col;
+	-moz-box-shadow: $x $y $spread $blur $col;
+	-o-box-shadow: $x $y $spread $blur $col;
+}
+
+@mixin innerShadow( $x, $y, $spread, $blur, $col) {
+	box-shadow: inset $x $y $spread $blur $col;
+	-webkit-box-shadow: inset $x $y $spread $blur $col;
+	-moz-box-shadow: inset $x $y $spread $blur $col;
+	-o-box-shadow: inset $x $y $spread $blur $col;
+}
+
+@mixin transition( $target, $duration, $easing ) {
+	-webkit-transition:  $target $duration $easing;
+	-moz-transition: $target $duration $easing;
+	-o-transition: $target $duration $easing;
+	-ms-transition: $target $duration $easing;
+	transition: $target $duration $easing;
+}
